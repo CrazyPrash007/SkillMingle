@@ -874,5 +874,33 @@
         "email": "tony7@gmail.com",
         "password": "$2a$10$o.viicAmsNz5urNJXfo4DOVdzOjVJQJ29x54vPEMUdDEqncLnF6Iu",
         "id": 36
+    },
+    {
+        "name": "Olusegun",
+        "country": "Nigeria",
+        "hourlyRate": 30.0,
+        "jobSuccess": 100.0,
+        "title": "Proficient data analyst | Engineer",
+        "totalHours": 28,
+        "totalJobs": 2,
+        "skills": [
+            "Python",
+            "Linear Regression",
+            "Mathematics",
+            "Tableau",
+            "SQL",
+            "Big Data",
+            "Microsoft Excel",
+            "Data Visualization",
+            "RStudio",
+            "Microsoft Power BI",
+            "Data Analysis",
+            "A/B Testing",
+            "Dashboard",
+            "Data Modeling"
+        ],
+        "email": "olusegun@gmail.com",
+        "password": "$2a$10$2HibnR0dwRS.2FwkXQt00e/OJGL3IRPVNoT0Dnm9Gy8b7xydmeocu",
+        "id": 37
     }
 ]

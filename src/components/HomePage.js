@@ -30,9 +30,9 @@ function HomePage() {
         <h3>Why Choose SkillMingle?</h3>
         <ul>
           <li>Wide range of skilled freelancers</li>
-          <li>Easy-to-use platform</li>
-          <li>Secure payment system</li>
-          <li>24/7 customer support</li>
+          <li>Achieve top-quality results rapidly</li>
+          <li>Stay within your budget</li>
+          <li>Rely on round-the-clock support</li>
         </ul>
       </div>
       <div className="testimonials">

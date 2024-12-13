@@ -838,5 +838,26 @@
             ""
         ],
         "id": 43
+    },
+    {
+        "jobTitle": "Google ads",
+        "exLevelDemand": 0,
+        "clientCountry": "United States",
+        "rating": 4.82,
+        "feedbackNum": 0,
+        "email": "yoyohoneysingh@gmail.com",
+        "password": "$2a$10$xWen5.tnrrDm/6/y1NYuS.cnSkclpVI3WcwZTkzf67nPPMm1iLRqi",
+        "startRate": 15,
+        "endRate": 50,
+        "skills": [
+            "Search Engine Marketing",
+            "Google Ads",
+            "Google Analytics",
+            "PPC Campaign Setup & Management",
+            "Pay Per Click Advertising",
+            "Google Tag Manager",
+            "SEO Keyword Research"
+        ],
+        "id": 44
     }
 ]

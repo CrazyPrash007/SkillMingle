@@ -32,7 +32,7 @@ Clone the repository:
 
 2. Install the required Python packages:
     ```sh
-    pip install Flask Flask-Cors scikit-learn geopy jsonify
+    pip install Flask Flask-Cors scikit-learn geopy jsonify bcrypt
     ```
 
 3. Start the Flask server:
@@ -50,6 +50,7 @@ Clone the repository:
 2. Install the required Node.js packages:
     ```sh
     npm install
+    npm install bcryptjs
     ```
 
 3. Install `react-router-dom@5.3.4`:
