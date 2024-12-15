@@ -47,7 +47,12 @@ function Profile({ jobId }) {
             <p><strong>Rating:</strong> {employer.rating}</p>
             <p><strong>Location:</strong> {employer.clientCountry}</p>
             <p><strong>Budget:</strong> ${employer.startRate}-${employer.endRate}</p>
-            <p><strong>Skills:</strong> {employer.skills?.join(', ')}</p>
+            <p><strong>Skills:</strong> </p>
+            <div>
+              {employer.skills?.map((skill, index) => (
+              <span className="skills-badge" key={index}>{skill}</span>
+              ))}
+            </div>
         </div>
     );
 }

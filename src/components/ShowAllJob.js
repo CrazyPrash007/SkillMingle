@@ -85,7 +85,7 @@ function ShowAllJob() {
             />
           </label>
           <label>
-            Skills (comma-separated):
+            Skills:
             <input
               type="text"
               name="skills"
@@ -95,16 +95,16 @@ function ShowAllJob() {
             />
           </label>
           <label>
-            Min hourly rate:
+            Min Rating:
             <input
               type="number"
-              name="hourlyRateMin"
-              placeholder="Min hourly rate"
-              value={filters.hourlyRateMin}
+              name="ratingMin"
+              placeholder="Min Rating"
+              value={filters.ratingMin}
               onChange={handleFilterChange}
             />
           </label>
-          <label>
+          {/* <label>
             Max hourly rate:
             <input
               type="number"
@@ -123,7 +123,7 @@ function ShowAllJob() {
               value={filters.jobSuccessMin}
               onChange={handleFilterChange}
             />
-          </label>
+          </label> */}
           <button onClick={applyFilters}>Apply Filters</button>
         </div>
       </div>
@@ -140,7 +140,12 @@ function ShowAllJob() {
             <p><strong>Number of feedbacks:</strong> {job.feedbackNum}</p>
             <p><strong>Payment Type:</strong> {job.paymentType}</p>
             <p><strong>Budget:</strong> ${job.startRate}-${job.endRate}</p>
-            <p><strong>Skills:</strong> {job.skills.join(', ')}</p>
+            <p><strong>Skills:</strong> </p>
+            <div>
+              {job.skills.map((skill, index) => (
+              <span className="skills-badge" key={index}>{skill}</span>
+              ))}
+            </div>
           </div>
         ))}
       </div>

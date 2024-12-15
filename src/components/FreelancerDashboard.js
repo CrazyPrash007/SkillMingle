@@ -105,7 +105,7 @@ function FreelancerDashboard() {
             />
           </label>
           <label>
-            Skills (comma-separated):
+            Skills:
             <input
               type="text"
               name="skills"
@@ -115,26 +115,26 @@ function FreelancerDashboard() {
             />
           </label>
           <label>
+            Min Rating:
+            <input
+              type="number"
+              name="ratingMin"
+              placeholder="Min Rating"
+              value={filters.ratingMin}
+              onChange={handleFilterChange}
+            />
+          </label>
+          <label>
             Min hourly rate:
             <input
               type="number"
-              name="hourlyRateMin"
+              name="rateMin"
               placeholder="Min hourly rate"
-              value={filters.hourlyRateMin}
+              value={filters.rateMin}
               onChange={handleFilterChange}
             />
           </label>
-          <label>
-            Max hourly rate:
-            <input
-              type="number"
-              name="hourlyRateMax"
-              placeholder="Max hourly rate"
-              value={filters.hourlyRateMax}
-              onChange={handleFilterChange}
-            />
-          </label>
-          <label>
+          {/* <label>
             Min Job Success:
             <input
               type="number"
@@ -143,7 +143,7 @@ function FreelancerDashboard() {
               value={filters.jobSuccessMin}
               onChange={handleFilterChange}
             />
-          </label>
+          </label> */}
           <button onClick={applyFilters}>Apply Filters</button>
         </div>
       </div>

@@ -48,7 +48,12 @@ function ProfileFreelancer({ freelancerId }) {
             <p><strong>Location:</strong> {freelancer.country}</p>
             <p><strong>Job Success:</strong> {freelancer.jobSuccess}%</p>
             <p><strong>Hourly Rate:</strong> ${freelancer.hourlyRate}/hr</p>
-            <p><strong>Skills:</strong> {freelancer.skills?.join(', ')}</p>
+            <p><strong>Skills:</strong> </p>
+            <div>
+              {freelancer.skills?.map((skill, index) => (
+              <span className="skills-badge" key={index}>{skill}</span>
+              ))}
+            </div>
         </div>
     );
 }
