@@ -32,6 +32,15 @@ function ShowAllJob() {
   // Handle filter changes
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
+    const limits = {
+      ratingMin: 5,
+    };
+  
+    // Check limits
+    if (limits[name] !== undefined && value > limits[name]) {
+      alert(`The limit for ${name} is ${limits[name]}.`);
+      return;
+    }
     setFilters((prevFilters) => ({
       ...prevFilters,
       [name]: value,
@@ -104,26 +113,6 @@ function ShowAllJob() {
               onChange={handleFilterChange}
             />
           </label>
-          {/* <label>
-            Max hourly rate:
-            <input
-              type="number"
-              name="hourlyRateMax"
-              placeholder="Max hourly rate"
-              value={filters.hourlyRateMax}
-              onChange={handleFilterChange}
-            />
-          </label>
-          <label>
-            Min Job Success:
-            <input
-              type="number"
-              name="jobSuccessMin"
-              placeholder="Min Job Success"
-              value={filters.jobSuccessMin}
-              onChange={handleFilterChange}
-            />
-          </label> */}
           <button onClick={applyFilters}>Apply Filters</button>
         </div>
       </div>

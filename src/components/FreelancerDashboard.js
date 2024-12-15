@@ -62,6 +62,15 @@ function FreelancerDashboard() {
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
+    const limits = {
+      ratingMin: 5,
+    };
+  
+    // Check limits
+    if (limits[name] !== undefined && value > limits[name]) {
+      alert(`The limit for ${name} is ${limits[name]}.`);
+      return;
+    }
     setFilters({ ...filters, [name]: value });
   };
 
