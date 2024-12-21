@@ -34,6 +34,22 @@ function ShowAll() {
   // Handle filter changes
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
+    const limits = {
+      hourlyRateMin: { min: 0, max: undefined },
+      hourlyRateMax: { min: 0, max: undefined },
+    };
+  
+    // Check limits
+    if (limits[name] !== undefined) {
+      if (limits[name].max !== undefined && value > limits[name].max) {
+        alert(`The limit for ${name} is ${limits[name].max}.`);
+        return;
+      }
+      if (value < limits[name].min) {
+        alert(`The limit for ${name} is between ${limits[name].min} and ${limits[name].max !== undefined ? limits[name].max : 'unlimited'}.`);
+        return;
+      }
+    }
     setFilters((prevFilters) => ({
       ...prevFilters,
       [name]: value,
@@ -105,6 +121,7 @@ function ShowAll() {
               placeholder="Min hourly rate"
               value={filters.hourlyRateMin}
               onChange={handleFilterChange}
+              min="0" required
             />
           </label>
           <label>
@@ -115,6 +132,7 @@ function ShowAll() {
               placeholder="Max hourly rate"
               value={filters.hourlyRateMax}
               onChange={handleFilterChange}
+              min="0" required
             />
           </label>
           <button onClick={applyFilters}>Apply Filters</button>

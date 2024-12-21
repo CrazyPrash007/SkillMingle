@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-// import { useParams } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import '../styles/Profile.css';
 
 function ProfileFreelancer({ freelancerId }) {
-    // const { freelancerId } = useParams();
     const [freelancer, setFreelancer] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [deleted, setDeleted] = useState(false);
+    const history = useHistory();
 
     useEffect(() => {
         // Fetch freelancer details from job.json or API
@@ -28,6 +29,30 @@ function ProfileFreelancer({ freelancerId }) {
             });
     }, [freelancerId]);
 
+    const handleDelete = () => {
+        if (window.confirm("Are you sure you want to delete this freelancer profile?")) {
+            fetch(`http://127.0.0.1:5000/delete_freelancer/${freelancerId}`, {
+                method: 'DELETE',
+            })
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error('Failed to delete the freelancer account.');
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    console.log(data.message);
+                    alert("Account deleted successfully!");
+                    setDeleted(true);
+                    history.push(`/freelancerapp`);
+                })
+                .catch((error) => {
+                    console.error("Error deleting account:", error);
+                    alert("An error occurred while deleting the account.");
+                });
+        }
+    };
+
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -36,6 +61,10 @@ function ProfileFreelancer({ freelancerId }) {
         return <div>Error: {error.message}</div>;
     }
 
+    if (deleted) {
+        return <div>The job profile has been deleted successfully.</div>;
+    }
+    
     if (!freelancer) {
         return <div>No freelancer data found.</div>;
     }
@@ -50,10 +79,13 @@ function ProfileFreelancer({ freelancerId }) {
             <p><strong>Hourly Rate:</strong> ${freelancer.hourlyRate}/hr</p>
             <p><strong>Skills:</strong> </p>
             <div>
-              {freelancer.skills?.map((skill, index) => (
-              <span className="skills-badge" key={index}>{skill}</span>
-              ))}
+                {freelancer.skills?.map((skill, index) => (
+                    <span className="skills-badge" key={index}>{skill}</span>
+                ))}
             </div>
+            <button className="delete-button" onClick={handleDelete}>
+                Delete my account
+            </button>
         </div>
     );
 }

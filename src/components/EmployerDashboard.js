@@ -66,6 +66,23 @@ function EmployerDashboard() {
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
+    const limits = {
+      hourlyRateMin:{ min: 0, max: undefined },
+      hourlyRateMax: { min: 0, max: undefined },
+      jobSuccessMin: { min: 0, max: 100 },
+    };
+  
+    // Check limits
+    if (limits[name] !== undefined) {
+      if (limits[name].max !== undefined && value > limits[name].max) {
+        alert(`The limit for ${name} is ${limits[name].max}.`);
+        return;
+      }
+      if (value < limits[name].min) {
+        alert(`The limit for ${name} is between ${limits[name].min} and ${limits[name].max !== undefined ? limits[name].max : 'unlimited'}.`);
+        return;
+      }
+    }
     setFilters({ ...filters, [name]: value });
   };
 
@@ -127,6 +144,7 @@ function EmployerDashboard() {
               placeholder="Min hourly rate"
               value={filters.hourlyRateMin}
               onChange={handleFilterChange}
+              min="0" required
             />
           </label>
           <label>
@@ -137,18 +155,10 @@ function EmployerDashboard() {
               placeholder="Max hourly rate"
               value={filters.hourlyRateMax}
               onChange={handleFilterChange}
+              min="0" required
             />
           </label>
-          {/* <label>
-            Min Job Success:
-            <input
-              type="number"
-              name="jobSuccessMin"
-              placeholder="Min Job Success"
-              value={filters.jobSuccessMin}
-              onChange={handleFilterChange}
-            />
-          </label> */}
+          
           <button onClick={applyFilters}>Apply Filters</button>
         </div>
       </div>
@@ -173,7 +183,7 @@ function EmployerDashboard() {
         ))}
       </div>
 
-      <RatingForm />
+      <RatingForm jobId={jobId} />
 
     </div>
     

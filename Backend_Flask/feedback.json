@@ -1,0 +1,26 @@
+[
+    {
+        "feedbackId": 1,
+        "jobId": "47",
+        "freelancerId": null,
+        "rating": 5,
+        "feedback": "Nice feedback",
+        "timestamp": "2024-12-15T23:52:30.073649"
+    },
+    {
+        "feedbackId": 2,
+        "jobId": null,
+        "freelancerId": "49",
+        "rating": 4,
+        "feedback": "Nice jobs",
+        "timestamp": "2024-12-16T00:32:34.738878"
+    },
+    {
+        "feedbackId": 3,
+        "jobId": null,
+        "freelancerId": "37",
+        "rating": 4,
+        "feedback": "UI is good.",
+        "timestamp": "2024-12-16T02:22:36.361596"
+    }
+]

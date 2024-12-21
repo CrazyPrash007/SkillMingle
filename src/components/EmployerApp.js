@@ -24,14 +24,23 @@ function EmployerApp() {
 
     // Define limits
     const limits = {
-      rating: 5,
-      exLevelDemand: 100,
+      exLevelDemand: { min: 0, max: 100 },
+      rating: { min: 0, max: 5 },
+      feedbackNum: { min: 0, max: undefined },
+      startRate: { min: 0, max: undefined },
+      endRate: { min: 0, max: undefined },
     };
-
+  
     // Check limits
-    if (limits[name] !== undefined && value > limits[name]) {
-      alert(`The limit for ${name} is ${limits[name]}.`);
-      return;
+    if (limits[name] !== undefined) {
+      if (limits[name].max !== undefined && value > limits[name].max) {
+        alert(`The limit for ${name} is ${limits[name].max}.`);
+        return;
+      }
+      if (value < limits[name].min) {
+        alert(`The limit for ${name} is between ${limits[name].min} and ${limits[name].max !== undefined ? limits[name].max : 'unlimited'}.`);
+        return;
+      }
     }
 
     setFormData({ ...formData, [name]: value });
@@ -71,6 +80,19 @@ function EmployerApp() {
       .then((data) => {
         console.log("Job stored successfully with ID:", data.id);
         alert("Registration successful! Now you can log in.");
+        // Clear the form fields
+        setFormData({
+          jobTitle: "",
+          exLevelDemand: 0,
+          clientCountry: "",
+          rating: 0,
+          feedbackNum: 0,
+          email: '',
+          password: '',
+          startRate: 0,
+          endRate: 0,
+          skills: "",
+        });
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -149,7 +171,7 @@ function EmployerApp() {
         </div>
         <div className="form-row">
           <div className="input-data">
-            <input type="number" name="feedbackNum" value={formData.feedbackNum} onChange={handleChange} required />
+            <input type="number" name="feedbackNum" value={formData.feedbackNum} onChange={handleChange} min="0" required />
             <div className="underline"></div>
             <label>Feedback Number</label>
           </div>
@@ -161,12 +183,12 @@ function EmployerApp() {
         </div>
         <div className="form-row">
           <div className="input-data">
-            <input type="number" name="startRate" value={formData.startRate} onChange={handleChange} required />
+            <input type="number" name="startRate" value={formData.startRate} onChange={handleChange} min="0" required />
             <div className="underline"></div>
             <label>Start Rate</label>
           </div>
           <div className="input-data">
-            <input type="number" name="endRate" value={formData.endRate} onChange={handleChange} required />
+            <input type="number" name="endRate" value={formData.endRate} onChange={handleChange} min="0" required />
             <div className="underline"></div>
             <label>End Rate</label>
           </div>

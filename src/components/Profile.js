@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-// import { useParams } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import '../styles/Profile.css';
 
 function Profile({ jobId }) {
-    // const { jobId } = useParams();
     const [employer, setEmployer] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [deleted, setDeleted] = useState(false);
+    const history = useHistory();
 
     useEffect(() => {
         // Fetch employer details from job.json or API
@@ -28,12 +29,40 @@ function Profile({ jobId }) {
             });
     }, [jobId]);
 
+    const handleDelete = () => {
+        if (window.confirm("Are you sure you want to delete this job profile?")) {
+            fetch(`http://127.0.0.1:5000/delete_job/${jobId}`, {
+                method: 'DELETE',
+            })
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error('Failed to delete the job profile.');
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    console.log(data.message);
+                    alert("Job profile deleted successfully!");
+                    setDeleted(true);
+                    history.push(`/employerapp`);
+                })
+                .catch((error) => {
+                    console.error("Error deleting job profile:", error);
+                    alert("An error occurred while deleting the job profile.");
+                });
+        }
+    };
+
     if (loading) {
         return <div>Loading...</div>;
     }
 
     if (error) {
         return <div>Error: {error.message}</div>;
+    }
+
+    if (deleted) {
+        return <div>The job profile has been deleted successfully.</div>;
     }
 
     if (!employer) {
@@ -49,10 +78,13 @@ function Profile({ jobId }) {
             <p><strong>Budget:</strong> ${employer.startRate}-${employer.endRate}</p>
             <p><strong>Skills:</strong> </p>
             <div>
-              {employer.skills?.map((skill, index) => (
-              <span className="skills-badge" key={index}>{skill}</span>
-              ))}
+                {employer.skills?.map((skill, index) => (
+                    <span className="skills-badge" key={index}>{skill}</span>
+                ))}
             </div>
+            <button className="delete-button" onClick={handleDelete}>
+                Delete Job Profile
+            </button>
         </div>
     );
 }
