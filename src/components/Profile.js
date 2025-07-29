@@ -11,7 +11,7 @@ function Profile({ jobId }) {
 
     useEffect(() => {
         // Fetch employer details from job.json or API
-        fetch(`http://127.0.0.1:5000/job_details/${jobId}`) // Replace with the correct path or API endpoint
+        fetch(`https://backend-flask-z3kj.onrender.com/job_details/${jobId}`) // Replace with the correct path or API endpoint
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -31,7 +31,7 @@ function Profile({ jobId }) {
 
     const handleDelete = () => {
         if (window.confirm("Are you sure you want to delete this job profile?")) {
-            fetch(`http://127.0.0.1:5000/delete_job/${jobId}`, {
+            fetch(`https://backend-flask-z3kj.onrender.com/delete_job/${jobId}`, {
                 method: 'DELETE',
             })
                 .then((response) => {
