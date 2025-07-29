@@ -64,7 +64,7 @@ function EmployerApp() {
       skills: formData.skills.split(",").map((skill) => skill.trim()), // Array of strings
     };
 
-    fetch("http://127.0.0.1:5000/store_job", {
+    fetch("https://backend-flask-z3kj.onrender.com/store_job", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -108,7 +108,7 @@ function EmployerApp() {
       password: loginDetails.password, // Store the hashed password
     };
 
-    fetch("http://127.0.0.1:5000/get_job_id", {
+    fetch("https://backend-flask-z3kj.onrender.com/get_job_id", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
