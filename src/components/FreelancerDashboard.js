@@ -21,7 +21,7 @@ function FreelancerDashboard() {
 
   useEffect(() => {
     console.log("Freelancer ID:", freelancerId);
-    fetch(`http://127.0.0.1:5000/freelancer_details/${freelancerId}`)
+    fetch(`https://backend-flask-z3kj.onrender.com/freelancer_details/${freelancerId}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -30,7 +30,7 @@ function FreelancerDashboard() {
       })
       .then((freelancerDetails) => {
         // Fetch recommended jobs using freelancerDetails.
-        fetch('http://127.0.0.1:5000/recommend_jobs', {
+        fetch('https://backend-flask-z3kj.onrender.com/recommend_jobs', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(freelancerDetails),
