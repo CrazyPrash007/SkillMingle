@@ -11,7 +11,7 @@ function ProfileFreelancer({ freelancerId }) {
 
     useEffect(() => {
         // Fetch freelancer details from job.json or API
-        fetch(`http://127.0.0.1:5000/freelancer_details/${freelancerId}`) // Replace with the correct path or API endpoint
+        fetch(`https://backend-flask-z3kj.onrender.com/freelancer_details/${freelancerId}`) // Replace with the correct path or API endpoint
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -31,7 +31,7 @@ function ProfileFreelancer({ freelancerId }) {
 
     const handleDelete = () => {
         if (window.confirm("Are you sure you want to delete this freelancer profile?")) {
-            fetch(`http://127.0.0.1:5000/delete_freelancer/${freelancerId}`, {
+            fetch(`https://backend-flask-z3kj.onrender.com/delete_freelancer/${freelancerId}`, {
                 method: 'DELETE',
             })
                 .then((response) => {
