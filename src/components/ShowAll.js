@@ -14,7 +14,7 @@ function ShowAll() {
 
   useEffect(() => {
     // Fetch all freelancers from the backend
-    fetch('http://127.0.0.1:5000/freelancers')
+    fetch('https://backend-flask-z3kj.onrender.com/freelancers')
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
