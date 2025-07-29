@@ -12,7 +12,7 @@ function ShowAllJob() {
 
   useEffect(() => {
     // Fetch all jobs from the backend
-    fetch('http://127.0.0.1:5000/jobs')
+    fetch('https://backend-flask-z3kj.onrender.com/jobs')
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
