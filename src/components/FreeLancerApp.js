@@ -64,7 +64,7 @@ function FreelancerApp() {
       password: hashedPassword,
     };
 
-    fetch("http://127.0.0.1:5000/store_freelancer", {
+    fetch("https://backend-flask-z3kj.onrender.com/store_freelancer", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -109,7 +109,7 @@ function FreelancerApp() {
       password: loginDetails.password, // Store the hashed password
     };
 
-    fetch("http://127.0.0.1:5000/get_freelancer_id", {
+    fetch("https://backend-flask-z3kj.onrender.com/get_freelancer_id", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
