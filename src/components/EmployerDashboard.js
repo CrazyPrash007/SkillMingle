@@ -23,7 +23,7 @@ function EmployerDashboard() {
   useEffect(() => {
     console.log("Job ID:", jobId);
 
-    fetch(`http://127.0.0.1:5000/job_details/${jobId}`)
+    fetch(`https://backend-flask-z3kj.onrender.com/job_details/${jobId}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -33,7 +33,7 @@ function EmployerDashboard() {
       .then((jobDetails) => {
         console.log("Job Details:", jobDetails);
 
-        fetch("http://127.0.0.1:5000/recommend_freelancers", {
+        fetch("https://backend-flask-z3kj.onrender.com/recommend_freelancers", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(jobDetails),
