@@ -25,7 +25,7 @@ function RatingForm({ jobId, freelancerId }) {
     };
 
     // Optional: Replace the following fetch with real logic when the backend is functional
-    fetch("http://127.0.0.1:5000/submit_rating", {
+    fetch("https://backend-flask-z3kj.onrender.com/submit_rating", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(feedbackData),
